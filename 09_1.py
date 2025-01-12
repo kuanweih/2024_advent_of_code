@@ -1,6 +1,3 @@
-import collections
-
-
 def read_input(file_path):
     res = []
     with open(file_path, "r", encoding="utf-8") as file:
@@ -12,16 +9,7 @@ def read_input(file_path):
 file_path = "./inputs/09.txt"
 disk_map = read_input(file_path)
 
-
-
-# print(disk_map)
-
-
 disk_size = sum(int(ch) for ch in disk_map)
-
-
-print(disk_size)
-
 
 filesystem = []
 for i, ch in enumerate(disk_map):
@@ -32,8 +20,6 @@ for i, ch in enumerate(disk_map):
     else:
         for _ in range(int(ch)):
             filesystem.append(-1)
-
-print(filesystem)
 
 
 l = 0
@@ -48,20 +34,6 @@ while l < r:
         l += 1
         r -= 1
 
-print(filesystem)
-
-# print(sum(filesystem))
-
 res = sum(i * x for i, x in enumerate(filesystem) if x != -1)
-    
-print(res)    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+print(res)
