@@ -21,26 +21,16 @@ for i, ch in enumerate(disk_map):
         spaces.append(int(ch))
 
 
-# print(blocks)
-# print(spaces)
-# print(len(blocks))
-# print(len(spaces))
-
 block_to_space = {}
 space_to_block = collections.defaultdict(list)
 
 for b in range(len(blocks) - 1, -1, -1):
-    for s in range(len(spaces)):
+    for s in range(min(b, len(spaces))):
         if spaces[s] >= blocks[b]:
             block_to_space[b] = s
             space_to_block[s].append(b)
             spaces[s] -= blocks[b]
             break
-
-print(block_to_space)
-print(space_to_block)
-print(blocks)
-print(spaces)
 
 filesystem = []
 for i in range(len(blocks)):
@@ -61,12 +51,6 @@ for i in range(len(blocks)):
     for _ in range(spaces[i]):
         filesystem.append(-1)
 
-print(filesystem)
-
 res = sum(i * x for i, x in enumerate(filesystem) if x != -1)
 
 print(res)
-
-
-
-# 8551696246309 too high
